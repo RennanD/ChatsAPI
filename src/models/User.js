@@ -1,19 +1,27 @@
 /* Importando o banco mongo */
-const mongoose = require('mongoose')
+const {model, Schema} = require('../mongoose')
 
 /* Construindo nosso Model */
-const UserSchema = new mongoose.Schema({
-	username: {
+const UserSchema = new Schema({
+	user: {
 		type: String,
 		required: true,
 	},
 	name: {
-		type:String
-	}
-	
+		type:String,
+		required: true
+	},
+	avatar: {
+		type: String,
+		required: true
+	},
+	activeChats: [{
+		type: Schema.Types.ObjectId,
+		ref: 'User'
+	}]
 },{
-
+	timestamps: true
 })
 
 /* Exportando nosso Model */
-mongoose.model('User', UserSchema)
+module.exports = model('User', UserSchema)

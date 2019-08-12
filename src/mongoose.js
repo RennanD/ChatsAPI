@@ -2,10 +2,9 @@
 const mongoose = require('mongoose')
 
 /* Ligando conexão ao banco de dados */
-mongoose.connect('mongodb://127.0.0.1:27017/whatsapplocal',{
+mongoose.connect('mongodb://127.0.0.1:27017/whatsapp2',{
 	useNewUrlParser: true
 })
-
 
 /* Promisse mongo */
 mongoose.Promisse = global.Promisse
