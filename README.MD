@@ -97,6 +97,7 @@ FORMAT: 1A
 
 ### Show expecific chat [GET] [/chats/:chatId]
     
+    +Response 201 (application/json)
     + Headers
             user: "5d52fcb29b2d5c448c3e8e91"
     + Body
@@ -124,6 +125,8 @@ FORMAT: 1A
         }
 
 ### Store new chat between logged user and targget user [POST] [/chats/:targget]
+    
+    + Response 201 (application/json)
     + Headers
             user: "5d52fcb29b2d5c448c3e8e91"
     + Body
@@ -160,6 +163,8 @@ FORMAT: 1A
         }
 
 ### Store a new messege in the chat [POST] [/chats/:chatId/messege]
+    
+    + Response 201 (application/json)
     + Headers
             user: "5d52fcb29b2d5c448c3e8e91"
     + Body
