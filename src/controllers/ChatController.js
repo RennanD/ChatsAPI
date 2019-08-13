@@ -2,6 +2,12 @@
 const Chat = require('../models/Chat')
 const User = require('../models/User')
 
+async function pushChat(object, first, secound ){
+	object.connectedUsers.push(first)
+	object.activeChats.push(secound)
+	await object.save()
+}
+
 /* Exportando nosso Controller */
 module.exports = {
 
@@ -48,22 +54,17 @@ module.exports = {
 			}
 
 			if(authorChat.connectedUsers.includes(targget)){
-				return res.status(201).json({msg: 'Já existe um chat iniciado com este usuário'})
+				return res.json({msg: 'Já existe um chat iniciado com este usuário'})
 			}
 			const chat = await Chat.create({})
 			
-			authorChat.connectedUsers.push(targget)
-			authorChat.activeChats.push(chat._id)
-			await authorChat.save()
-
-			targgetChat.connectedUsers.push(user)
-			targgetChat.activeChats.push(chat._id)
-			await targgetChat.save()
+			pushChat(authorChat,targget,chat._id)
+			pushChat(targgetChat, user, chat._id)
 			
 			chat.users.push(authorChat,targgetChat)
 			await chat.save()
 
-			return res.json(chat)
+			return res.status(201).json(chat)
 
 		} catch(err) {
 			return res.status(400).json({error: 'é preciso pelo menos dois usuários por chat!'})
@@ -71,6 +72,9 @@ module.exports = {
 	},
 
 	async destroy(req, res){
-		
+		const { id } = req.params
+		await Chat.findByIdAndRemove(id)
+
+		return res.json({msg:'Chat excluído com sucesso!'})
 	}
 }

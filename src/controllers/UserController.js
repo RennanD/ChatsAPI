@@ -15,7 +15,9 @@ module.exports = {
                     {_id: {$ne: user}},
                 ]
             })
+
             return res.json(users)
+
         } catch(err){
             return res.status(400).json({error: 'Failed!'})
         }
