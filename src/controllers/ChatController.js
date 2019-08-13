@@ -45,7 +45,6 @@ module.exports = {
 			const chat = await Chat.create({})
 
 			chat.users.push(authorChat,targgetChat)
-
 			await chat.save()
 			
 			return res.json(chat)

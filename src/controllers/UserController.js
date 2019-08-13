@@ -1,7 +1,7 @@
 
 const User = require('../models/User')
 const axios = require('axios')
-
+const api = process.env.EXTERNAL_API
 /* Exportando nosso Controller */
 module.exports = {
 
@@ -30,7 +30,7 @@ module.exports = {
 
 			if(userExixits) return res.json(userExixits)
 
-			const response = await axios.get(`https://api.github.com/users/${username}`)
+			const response = await axios.get(`${api}/${username}`)
             const {name,  avatar_url: avatar} = response.data
             const user = await User.create({
                 name, 
