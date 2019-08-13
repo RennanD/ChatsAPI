@@ -41,7 +41,7 @@ module.exports = {
             })
 
             req.io.emit('user',user)
-			return res.json(user)
+			return res.status(201).json(user)
         
         } catch(err) {
 
