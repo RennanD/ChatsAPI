@@ -15,9 +15,13 @@ const UserSchema = new Schema({
 		type: String,
 		required: true
 	},
-	activeChats: [{
+	connectedUsers: [{
 		type: Schema.Types.ObjectId,
 		ref: 'User'
+	}],
+	activeChats:[{
+		type: Schema.Types.ObjectId,
+		ref: 'Chat'
 	}]
 },{
 	timestamps: true

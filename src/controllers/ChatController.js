@@ -6,9 +6,24 @@ const User = require('../models/User')
 module.exports = {
 
 	async index(req, res){
+		const { user } = req.headers
+		const loggedUser = await User.findById(user)
+		try {
+			const chats = await Chat.find({
+				$and: [
+					{_id: {$in: loggedUser.activeChats}}
+				]
+			})
+
+			if(chats.length <= 0) return res.status(404).json({msg: 'Nenhum chat encontrado!'})
+
+			return res.json(chats)
+		} catch(err) {
+			console.log(err)
+			return res.status(400).json({msg: 'Você está desconectado!'})
+		}
 		
-		const chats = await Chat.find().populate('users')
-		return res.json(chats)
+		
 	},
 
 	async show(req, res){
@@ -32,21 +47,22 @@ module.exports = {
 				})
 			}
 
-			if(authorChat.activeChats.includes(targget)){
+			if(authorChat.connectedUsers.includes(targget)){
 				return res.status(201).json({msg: 'Já existe um chat iniciado com este usuário'})
 			}
-
-			authorChat.activeChats.push(targget)
-			await authorChat.save()
-			
-			targgetChat.activeChats.push(user)
-			await targgetChat.save()
-
 			const chat = await Chat.create({})
+			
+			authorChat.connectedUsers.push(targget)
+			authorChat.activeChats.push(chat._id)
+			await authorChat.save()
 
+			targgetChat.connectedUsers.push(user)
+			targgetChat.activeChats.push(chat._id)
+			await targgetChat.save()
+			
 			chat.users.push(authorChat,targgetChat)
 			await chat.save()
-			
+
 			return res.json(chat)
 
 		} catch(err) {
