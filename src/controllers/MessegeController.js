@@ -25,7 +25,8 @@ module.exports = {
 			console.log(messege)
 			chat.messeges.push(messege)
 			await chat.save()
-
+			
+			req.io.sockets.in(chat._id).emit('messege',messege)
 			return res.json(chat)
 		} catch(err) {
 			return res.status(400).json({error: 'Não foi possível enviar a mensagem!'})

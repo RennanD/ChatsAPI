@@ -64,6 +64,7 @@ module.exports = {
 			chat.users.push(authorChat,targgetChat)
 			await chat.save()
 
+			req.io.emit('chat',chat)
 			return res.status(201).json(chat)
 
 		} catch(err) {

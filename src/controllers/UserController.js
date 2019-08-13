@@ -40,8 +40,11 @@ module.exports = {
                 avatar
             })
 
+            req.io.emit('user',user)
 			return res.json(user)
-		} catch(err) {
+        
+        } catch(err) {
+
 			return res.status(400).json({error: 'User not found!'})
 		}
 	},
