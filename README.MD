@@ -81,7 +81,49 @@ FORMAT: 1A
             user: "5d52fcb29b2d5c448c3e8e91"
         + Body
         
-            5d558f12d9e87547f1008b0f
+        [
+            {
+                "users": [
+                {
+                    "connectedUsers": [
+                    "5d5597e3938a14519928ad86",
+                    "5d5598be938a14519928ad88"
+                    ],
+                    "activeChats": [
+                    "5d55980f938a14519928ad87",
+                    "5d5598cb938a14519928ad89"
+                    ],
+                    "_id": "5d5597d8938a14519928ad85",
+                    "name": "Rennan Douglas",
+                    "user": "RennanD",
+                    "avatar": "https://avatars1.githubusercontent.com/u/15038553?v=4",
+                    "createdAt": "2019-08-15T17:35:20.648Z",
+                    "updatedAt": "2019-08-15T17:39:23.014Z",
+                    "__v": 2
+                },
+                {
+                    "connectedUsers": [
+                    "5d5597d8938a14519928ad85"
+                    ],
+                    "activeChats": [
+                    "5d55980f938a14519928ad87"
+                    ],
+                    "_id": "5d5597e3938a14519928ad86",
+                    "name": "Awesome User",
+                    "user": "awesomeuser",
+                    "avatar": "https://avatars0.githubusercontent.com/u/avatar",
+                    "createdAt": "2019-08-15T17:35:31.808Z",
+                    "updatedAt": "2019-08-15T17:36:16.462Z",
+                    "__v": 1
+                }
+                ],
+                "messeges": [],
+                "_id": "5d55980f938a14519928ad87",
+                "createdAt": "2019-08-15T17:36:15.322Z",
+                "updatedAt": "2019-08-15T17:36:16.461Z",
+                "__v": 1
+            },
+        ]
 
 ### Show expecific chat [GET] [/chats/:chatId]
     
@@ -120,33 +162,14 @@ FORMAT: 1A
     + Body
         {
             "users": [
-                {
-                "connectedUsers": [5d52fd7994b71a450a9297e5],
-                "activeChats": [5d5318c4183ace509714ca8e],
-                "_id": "5d52fcb29b2d5c448c3e8e91",
-                "name": "Rennan Douglas",
-                "user": "RennanD",
-                "avatar": "https://avatars1.githubusercontent.com/u/15038553?v=4",
-                "createdAt": "2019-08-13T18:14:52.451Z",
-                "updatedAt": "2019-08-13T20:08:36.436Z",
-                "__v": 1
-                },
-                {
-                "connectedUsers": [5d52fe1c94b71a450a9297e9],
-                "activeChats": [5d5318c4183ace509714ca8e],
-                "_id": "5d52fd7994b71a450a9297e5",
-                "name": "Awesome User",
-                "user": "awesome user",
-                "avatar": "https://avatars2.githubusercontent.com/u/avatar",
-                "createdAt": "2019-08-13T18:12:09.878Z",
-                "updatedAt": "2019-08-13T20:08:36.436Z",
-                "__v": 3
-                }
+                "5d5597d8938a14519928ad85",
+                "5d5598be938a14519928ad88"
             ],
             "messeges": [],
-            "_id": "5d5318c4183ace509714ca8e",
-            "createdAt": "2019-08-13T20:08:36.423Z",
-            "updatedAt": "2019-08-13T20:08:36.446Z",
+            "userTargget": [],
+            "_id": "5d5598cb938a14519928ad89",
+            "createdAt": "2019-08-15T17:39:23.011Z",
+            "updatedAt": "2019-08-15T17:39:23.014Z",
             "__v": 1
         }
 

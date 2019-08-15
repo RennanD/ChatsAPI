@@ -21,21 +21,10 @@ module.exports = {
 				$and: [
 					{_id: {$in: loggedUser.activeChats}}
 				]
-			})
+			}).populate('users')
 
 			if(chats.length <= 0) return res.status(404).json({msg: 'Nenhum chat encontrado!'})
 			
-			chats.map(chat => {
-				chat.users.map(userId => {
-					if(userId != user) targgetId = userId
-				})
-			})
-			
-			const targgetUSer = await User.findById(targgetId)
-			
-			chats.map(chat => {
-				chat.userTargget.push(targgetUSer)
-			})
 
 			return res.json(chats)
 		} catch(err) {
