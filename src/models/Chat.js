@@ -11,9 +11,7 @@ const ChatSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'Messege'
 	}],
-	userTarget:[{
-		type: String
-	}]
+	userTargget:[]
 },{
 	timestamps: true
 })

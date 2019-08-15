@@ -8,6 +8,7 @@ async function pushChat(object, first, secound ){
 	await object.save()
 }
 
+
 /* Exportando nosso Controller */
 module.exports = {
 
@@ -24,6 +25,17 @@ module.exports = {
 
 			if(chats.length <= 0) return res.status(404).json({msg: 'Nenhum chat encontrado!'})
 			
+			chats.map(chat => {
+				chat.users.map(userId => {
+					if(userId != user) targgetId = userId
+				})
+			})
+			
+			const targgetUSer = await User.findById(targgetId)
+			
+			chats.map(chat => {
+				chat.userTargget.push(targgetUSer)
+			})
 
 			return res.json(chats)
 		} catch(err) {

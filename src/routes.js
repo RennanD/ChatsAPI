@@ -4,7 +4,6 @@ const MessegeController = require('./controllers/MessegeController')
 const ChatController = require('./controllers/ChatController')
 
 routes.get('/users', UserController.index)
-routes.get('/users/:id', UserController.show)
 routes.get('/chats', ChatController.index)
 routes.get('/chats/:chatId', ChatController.show)
 
