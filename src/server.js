@@ -8,6 +8,7 @@ const routes =  require('./routes')
 const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
+app.use(cors())
 
 io.on('connection', socket => {
     console.log(socket.id)
@@ -16,7 +17,7 @@ io.on('connection', socket => {
     })
 })
 
-app.use(cors())
+
 app.use((req, res, next)=>{
     req.io = io
     return next()

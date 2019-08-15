@@ -21,7 +21,14 @@ module.exports = {
         } catch(err){
             return res.status(400).json({error: 'Failed!'})
         }
-	},
+    },
+    
+    async show (req,res) {
+        const { id } = req.params
+        const user = await User.findById(id)
+
+        return res.json(user)
+    },
 
 	async store(req, res){
 

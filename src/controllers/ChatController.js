@@ -14,6 +14,7 @@ module.exports = {
 	async index(req, res){
 		const { user } = req.headers
 		const loggedUser = await User.findById(user)
+		let targgetId = ''
 		try {
 			const chats = await Chat.find({
 				$and: [
@@ -22,6 +23,7 @@ module.exports = {
 			})
 
 			if(chats.length <= 0) return res.status(404).json({msg: 'Nenhum chat encontrado!'})
+			
 
 			return res.json(chats)
 		} catch(err) {
@@ -61,11 +63,11 @@ module.exports = {
 			pushChat(authorChat,targget,chat._id)
 			pushChat(targgetChat, user, chat._id)
 			
-			chat.users.push(authorChat,targgetChat)
+			chat.users.push(authorChat._id, targgetChat._id)
 			await chat.save()
 
 			req.io.emit('chat',chat)
-			return res.status(201).json(chat)
+			return res.json(chat)
 
 		} catch(err) {
 			return res.status(400).json({error: 'é preciso pelo menos dois usuários por chat!'})

@@ -10,6 +10,9 @@ const ChatSchema = new Schema({
 	messeges: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Messege'
+	}],
+	userTarget:[{
+		type: String
 	}]
 },{
 	timestamps: true
