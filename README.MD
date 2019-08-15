@@ -81,19 +81,7 @@ FORMAT: 1A
             user: "5d52fcb29b2d5c448c3e8e91"
         + Body
         
-            [
-                {
-                    "users": [
-                    "5d52fe1c94b71a450a9297e9",
-                    "5d52fd7994b71a450a9297e5"
-                    ],
-                    "messeges": [],
-                    "_id": "5d5318c4183ace509714ca8e",
-                    "createdAt": "2019-08-13T20:08:36.423Z",
-                    "updatedAt": "2019-08-13T20:08:36.446Z",
-                    "__v": 1
-                }
-            ]
+            5d558f12d9e87547f1008b0f
 
 ### Show expecific chat [GET] [/chats/:chatId]
     
