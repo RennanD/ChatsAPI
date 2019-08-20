@@ -22,7 +22,6 @@ module.exports = {
 				avatar: author.avatar,
 				content		
 			})
-			console.log(messege)
 			chat.messeges.push(messege)
 			await chat.save()
 			

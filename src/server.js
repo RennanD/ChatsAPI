@@ -11,18 +11,17 @@ const io = require('socket.io')(server)
 app.use(cors())
 
 io.on('connection', socket => {
-    console.log(socket.id)
     socket.on('connectChat', chat => {
         socket.join(chat)
     })
 })
 
-
-app.use((req, res, next)=>{
+app.use((req, res, next) =>{
     req.io = io
-    return next()
+    next()
 })
+
 app.use(express.json())
 app.use(routes)
 
-app.listen(process.env.PORT)
+server.listen(process.env.PORT)

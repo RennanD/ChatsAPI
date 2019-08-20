@@ -25,9 +25,14 @@ module.exports = {
     
     async show (req,res) {
         const { id } = req.params
-        const user = await User.findById(id)
+        try {
+            const user = await User.findById(id)
+            return res.json(user)
+        } catch (err) {
+            res.status(404).json({error: 'Usuário não encontrado'})
+        }
 
-        return res.json(user)
+        
     },
 
 	async store(req, res){
@@ -52,7 +57,7 @@ module.exports = {
         
         } catch(err) {
 
-			return res.status(400).json({error: 'User not found!'})
+			return res.status(400).json({error: 'Usuário não encontrado'})
 		}
 	},
 }
