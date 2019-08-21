@@ -17,15 +17,14 @@ module.exports = {
 
 		try {
 			const messege = await Messege.create({
-				id: author._id,
-				name: author.name,
-				avatar: author.avatar,
+				author: author._id,
 				content		
 			})
 			chat.messeges.push(messege)
 			await chat.save()
 			
 			req.io.sockets.in(chat._id).emit('messege',messege)
+
 			return res.json(chat)
 		} catch(err) {
 			return res.status(400).json({error: 'Não foi possível enviar a mensagem!'})
