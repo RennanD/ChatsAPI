@@ -15,6 +15,10 @@ const UserSchema = new Schema({
 		type: String,
 		required: true
 	},
+	bio: {
+		type: String,
+		require: false
+	},
 	connectedUsers: [{
 		type: Schema.Types.ObjectId,
 		ref: 'User'

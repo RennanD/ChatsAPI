@@ -49,7 +49,8 @@ module.exports = {
             const user = await User.create({
                 name, 
                 user: username,
-                avatar
+                avatar,
+                bio
             })
 
             req.io.emit('user',user)
